@@ -1,0 +1,132 @@
+.login-page {
+  background: rgba(240, 240, 240, 1);
+  overflow-y: unset;
+  height: 100vh;
+  justify-content: center;
+}
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 0px;
+
+  font-family: Trebuchet MS;
+  h1 {
+    height: 10px;
+    color: rgba(237, 28, 36, 1);
+  }
+  p {
+    font-family: Thonburi;
+  }
+}
+.login-container {
+  display: flex;
+
+  .input {
+    margin-top: 30px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    width: 450px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    .login-form {
+      background: rgba(255, 255, 255, 1);
+
+      margin: 0 30px;
+      color: #666666;
+      h1 {
+        margin-left: 40px;
+        margin-top: 40px;
+        background: rgba(255, 255, 255, 1);
+      }
+      .txt-line {
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        p {
+          background-color: transparent;
+        }
+        .link-reg {
+          margin-left: 15px;
+          background: transparent;
+        }
+      }
+
+      form {
+        padding-top: 20px;
+        justify-items: center;
+        background: rgba(255, 255, 255, 1);
+        padding-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10.33px;
+        .lab-font {
+          background: rgba(255, 255, 255, 1);
+          font-size: 22px;
+          margin-left: -20px;
+          width: 300px;
+          height: 36px;
+          padding-top: 10px;
+        }
+        #emil1 {
+          background: rgba(255, 255, 255, 1);
+          width: 110%;
+          height: 50px;
+          font-size: 15px;
+          font-weight: 500;
+          border-radius: 16px;
+          border: 1.33px solid rgba(102, 102, 102, 0.35);
+        }
+        #pwd1 {
+          width: 110%;
+          height: 50px;
+          background: rgba(255, 255, 255, 1);
+          border-radius: 16px;
+          font-size: 15px;
+          border: 1.33px solid rgba(102, 102, 102, 0.35);
+          margin-bottom: 30px;
+        }
+        button {
+          width: 70%;
+          height: 50px;
+          border-radius: 42.67px;
+          opacity: 0.25px;
+          cursor: pointer;
+        }
+        #subbutton {
+          width: 70%;
+          background: transparent;
+          background-color: transparent;
+        }
+      }
+    }
+    .btn-intermediate {
+      height: 40px;
+      width: 200px;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .btn-intermediate:hover {
+      transform: scale(1.1);
+    }
+    .semantics {
+      form {
+        margin-left: 30%;
+      }
+      h3 {
+        text-align: center;
+      }
+    }
+  }
+}
