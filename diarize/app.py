@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template, jsonify
 import tempfile
 from time import time
 import json
@@ -33,6 +33,10 @@ app = Flask(__name__)
 transcript_output = []
 srt_output = []
 
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 # Endpoint to transcribe audio
 @app.route('/transcribe', methods=['POST'])
 def transcribe_audio():
@@ -65,7 +69,7 @@ def transcribe(audio_path):
     suppress_numerals = True
     batch_size = 8
     language = None  # autodetect language
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
 
     if enable_stemming:
         return_code = os.system(
@@ -84,7 +88,7 @@ def transcribe(audio_path):
     else:
         vocal_target = audio_path
 
-    compute_type = "float16"
+    compute_type = "int8"
     whisper_results, language, audio_waveform = transcribe_batched(
         vocal_target,
         language,
@@ -94,7 +98,7 @@ def transcribe(audio_path):
         suppress_numerals,
         device,
     )
-    alignment_model, alignment_tokenizer, alignment_dictionary = load_alignment_model(
+    alignment_model, alignment_tokenizer= load_alignment_model(
     device,
     dtype=torch.float16 if device == "cuda" else torch.float32,
     )
@@ -120,13 +124,13 @@ def transcribe(audio_path):
         language=langs_to_iso[language],
     )
 
-    segments, scores, blank_id = get_alignments(
+    segments, scores, blank_token = get_alignments(
         emissions,
         tokens_starred,
-        alignment_dictionary,
+        alignment_tokenizer,
     )
 
-    spans = get_spans(tokens_starred, segments, alignment_tokenizer.decode(blank_id))
+    spans = get_spans(tokens_starred, segments, blank_token)
 
     word_timestamps = postprocess_results(text_starred, spans, stride, scores)
 
