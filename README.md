@@ -1,4 +1,4 @@
-# Anusandhan: Decipher,
+# Anusandhan: Decipher
 
 ## Description
 
